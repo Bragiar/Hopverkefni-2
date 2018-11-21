@@ -1,3 +1,5 @@
+import el from './helpers.js'
+
 const jsonData = '../../lectures.json';
 
 
@@ -14,9 +16,10 @@ function createContent(data, newSlug){
         slug, title, category,
         image, thumbnail, content,
       }] = data.lectures[i];
-    const content = document.querySelector('.content');
-
-
+    const header = document.querySelector('.header');
+    header.querySelector('header__category').appendChild(el('p',category));
+    header.querySelector('header__title').appendChild(el('p',title));
+    const contentDiv = document.querySelector('.content');
 }
 
 function fetchData(slug) {
