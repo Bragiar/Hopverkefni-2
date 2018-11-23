@@ -21,7 +21,6 @@ function createCards(data) {
   const infoCategory = el('div', category);
   infoCategory.classList.add('.lecture__info--category');
   info.appendChild(infoCategory);
-  
   const infoTitle = el('div', title);
   infoCategory.classList.add('.lecture__info--category');
   info.appendChild(infoTitle);
