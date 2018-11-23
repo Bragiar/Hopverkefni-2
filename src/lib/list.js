@@ -23,7 +23,6 @@ export default class List {
         throw new Error('Villa kom upp');
       })
       .then((data) => {
-        console.log(data.lectures);
         this.loadCards(data.lectures);
       })
       .catch((error) => {
@@ -32,17 +31,13 @@ export default class List {
   }
 
   loadCards(json) {
-    this.createCards(json[1]);
+    let i;
+    for (i = 0; i < json.length; i += 1) {
+      this.createCards(json[i]);
+    }
   }
 
-
   createCards(data) {
-
-    if (data.length === 0) {
-      // alert('Fann ekki lén');
-      return;
-    }
-
     const [{
       slug, title, category, thumbnail,
     }] = data;
@@ -69,5 +64,7 @@ export default class List {
     const infoCheck = el('div', '✓');
     infoCheck.classList.add('lecture__info--check', 'hidden');
     info.appendChild(infoCheck);
+    this.container.appendChild(container);
   }
 }
+// lksdjflkskdfjsk
