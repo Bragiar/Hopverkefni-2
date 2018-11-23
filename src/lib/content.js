@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { inherits } from 'util';
 import {el} from './helpers';
 
@@ -51,6 +52,23 @@ function createContent(data, newSlug) {
   for (let i = 0; i < content.length; i += 1) {
     elementBuilder(content[i])
   }
+=======
+
+function createContent(data, newSlug) {
+  let i;
+    let lecture = data.lectures[i];
+    if (lecture.slug === newSlug) {
+      break;
+    }
+  }
+    const [{
+        slug, title, category,
+        image, thumbnail, content,
+      }] = data.lectures[i];
+    const header = document.querySelector('.header');
+    header.querySelector('header__category').appendChild(el('p',category));
+    header.querySelector('header__title').appendChild(el('p',title));
+>>>>>>> 87977167a3bdecfbcd5f1e11795aa981ce27583f
 }
 
 function fetchData(slug) {
@@ -60,6 +78,7 @@ function fetchData(slug) {
         return response.json();
       }
 
+<<<<<<< HEAD
       throw new Error('Villa kom upp');
     })
     .then((data) => {
@@ -74,3 +93,14 @@ function initPage() {
   fetchData('html-sagan');
 }
 initPage();
+=======
+        throw new Error('Villa kom upp');
+      })
+      .then((data) => {
+        createContent(data.lectures, slug);
+      })
+      .catch((error) => {
+        console.error(error);
+        });
+ }
+>>>>>>> 87977167a3bdecfbcd5f1e11795aa981ce27583f
