@@ -53,9 +53,15 @@ function createContent(data, newSlug) {
     elementBuilder(content[i])
   }
 =======
+import el from './helpers'
+
+const jsonData = '../../lectures.json';
+
 
 function createContent(data, newSlug) {
+  console.log(data);
   let i;
+  for (i=0; i<data.lectures.length; i++) {
     let lecture = data.lectures[i];
     if (lecture.slug === newSlug) {
       break;
@@ -68,6 +74,7 @@ function createContent(data, newSlug) {
     const header = document.querySelector('.header');
     header.querySelector('header__category').appendChild(el('p',category));
     header.querySelector('header__title').appendChild(el('p',title));
+    const contentDiv = document.querySelector('.content');
 >>>>>>> 87977167a3bdecfbcd5f1e11795aa981ce27583f
 }
 
