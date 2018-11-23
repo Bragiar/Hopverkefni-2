@@ -1,16 +1,13 @@
-import el from './helpers';
+import { empty, el } from './helpers';
 
-const jsonData = '../../lectures.json';
-let i;
 function createCards(data) {
-  const lectures = document.querySelector('.lectures');
   const [{
     slug, title, category, thumbnail,
   }] = data;
   const container = el('div');
   container.classList.add('lecture');
   container.addEventListener('click', slug(slug));
-  lectures.appendChild(container);
+  this.container.appendChild(container);
   const imgdiv = el('div');
   imgdiv.classList.add('lecture__image');
   container.appendChild(imgdiv);
@@ -30,15 +27,16 @@ function createCards(data) {
   const infoCheck = el('div', '✓');
   infoCheck.classList.add('lecture__info--check', 'hidden');
   info.appendChild(infoCheck);
+  this.container.appendChild(container);
 }
 function loadCards(json) {
+  let i;
   for (i = 0; i < json.length; i += 1) {
     createCards(json[i]);
   }
 }
-
-export default function fetchData() {
-  fetch(jsonData)
+function fetchData() {
+  fetch(this.json)
     .then((response) => {
       if (response.ok) {
         return response.json();
@@ -53,3 +51,16 @@ export default function fetchData() {
       console.error(error);
     });
 }
+export default class List {
+  constructor() {
+    this.container = document.querySelector('.lectures');
+    this.json = '../../lectures.json';
+  }
+
+  load() {
+    empty(this.container);
+    console.log("komst i list");
+    fetchData();
+  }
+}
+// lksdjflkskdfjsk
