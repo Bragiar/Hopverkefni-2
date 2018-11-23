@@ -1,5 +1,41 @@
 import { empty, el } from './helpers';
 
+ function createCards(data) {
+  if (data.length === 0) {
+    alert('Fann ekki lén');
+    return;
+  }
+
+  const [{
+    slug, title, category, thumbnail,
+  }] = data;
+  console.log(slug, title, category, thumbnail);
+  const container = el('div');
+  container.classList.add('lecture');
+  //container.addEventListener('click', slug(slug));
+  this.container.appendChild(container);
+  const imgdiv = el('div');
+  imgdiv.classList.add('lecture__image');
+  container.appendChild(imgdiv);
+  const img = el('img');
+  img.classList.add('image');
+  img.setAttribute('src', thumbnail);
+  imgdiv.appendChild(img);
+  const info = el('div');
+  info.classList.add('lecture__info');
+  container.appendChild(info);
+  const infoCategory = el('div', category);
+  infoCategory.classList.add('.lecture__info--category');
+  info.appendChild(infoCategory);
+  const infoTitle = el('div', title);
+  infoCategory.classList.add('.lecture__info--category');
+  info.appendChild(infoTitle);
+  const infoCheck = el('div', '✓');
+  infoCheck.classList.add('lecture__info--check', 'hidden');
+  info.appendChild(infoCheck);
+  this.container.appendChild(container);
+}
+
 export default class List {
   constructor() {
     this.container = document.querySelector('.lectures');
@@ -8,7 +44,7 @@ export default class List {
 
   load() {
     empty(this.container);
-    console.log("komst i list");
+    console.log('komst i list');
     this.fetchData();
   }
 
@@ -18,32 +54,26 @@ export default class List {
         if (response.ok) {
           return response.json();
         }
-  
+
         throw new Error('Villa kom upp');
       })
       .then((data) => {
-        console.log(data.lectures);
-        this.loadCards(data.lectures);
+        this.loadCards(data);
       })
       .catch((error) => {
         console.error(error);
       });
   }
 
-  
 
   createCards(data) {
-    if (data.length === 0) {
-      alert('Fann ekki lén');
-      return;
-    }
-
-    const [{
+    const {
       slug, title, category, thumbnail,
-    }] = data;
+    } = data;
+    console.log(slug, title, category, thumbnail);
     const container = el('div');
     container.classList.add('lecture');
-    container.addEventListener('click', slug(slug));
+    //container.addEventListener('click',loadCards);
     this.container.appendChild(container);
     const imgdiv = el('div');
     imgdiv.classList.add('lecture__image');
@@ -66,15 +96,13 @@ export default class List {
     info.appendChild(infoCheck);
     this.container.appendChild(container);
   }
-  
-  loadCards(json) {
-    let i;
-    console.log(json[0]);
-    json.forEach(function(item){
-      console.log(item);
-      //this.createCards(item);
-    });
-  }
 
+  loadCards(json) {
+    console.log(json);
+    for(let i = 0; i < json.lectures.length; i++) {
+      console.log(json.lectures);
+      this.createCards(json.lectures[i]);
+    }
+  }
 }
 // lksdjflkskdfjsk
