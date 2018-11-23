@@ -1,5 +1,6 @@
 
 import List from './lib/list';
+import initPage from './lib/content';
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -7,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const isLecturePage = page.classList.contains('lecture-page');
 
   if (isLecturePage) {
-
+    initPage();
   } else {
     const list = new List();
     list.load();
