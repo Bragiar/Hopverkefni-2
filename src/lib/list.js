@@ -9,7 +9,7 @@ export default class List {
 
   load() {
     empty(this.container);
-    console.log("komst i list");
+    console.log('komst i list');
     this.fetchData();
   }
 
@@ -23,27 +23,22 @@ export default class List {
         throw new Error('Villa kom upp');
       })
       .then((data) => {
-        this.loadCards(data.lectures);
+        this.loadCards(data);
       })
       .catch((error) => {
         console.error(error);
       });
   }
 
-  loadCards(json) {
-    let i;
-    for (i = 0; i < json.length; i += 1) {
-      this.createCards(json[i]);
-    }
-  }
 
   createCards(data) {
-    const [{
+    const {
       slug, title, category, thumbnail,
-    }] = data;
+    } = data;
+    console.log(slug, title, category, thumbnail);
     const container = el('div');
     container.classList.add('lecture');
-    container.addEventListener('click', slug(slug));
+    //container.addEventListener('click',loadCards);
     this.container.appendChild(container);
     const imgdiv = el('div');
     imgdiv.classList.add('lecture__image');
@@ -66,5 +61,12 @@ export default class List {
     info.appendChild(infoCheck);
     this.container.appendChild(container);
   }
+
+  loadCards(json) {
+    console.log(json);
+    for(let i = 0; i < json.lectures.length; i++) {
+      console.log(json.lectures);
+      this.createCards(json.lectures[i]);
+    }
+  }
 }
-// lksdjflkskdfjsk
