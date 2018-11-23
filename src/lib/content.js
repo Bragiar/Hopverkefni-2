@@ -1,10 +1,9 @@
-<<<<<<< HEAD
-import { inherits } from 'util';
+//import { inherits } from 'util';
 import {el} from './helpers';
 
 const jsonData = '../../lectures.json';
 const contentDiv = document.querySelector('.content');
-console.log("hæ");
+
 
 function elementBuilder(array) {
   if (array.type === 'youtube') {
@@ -50,32 +49,8 @@ function createContent(data, newSlug) {
   header.querySelector('header__category').appendChild(el('p', category));
   header.querySelector('header__title').appendChild(el('p', title));
   for (let i = 0; i < content.length; i += 1) {
-    elementBuilder(content[i])
+    elementBuilder(content[i]);
   }
-=======
-import el from './helpers'
-
-const jsonData = '../../lectures.json';
-
-
-function createContent(data, newSlug) {
-  console.log(data);
-  let i;
-  for (i=0; i<data.lectures.length; i++) {
-    let lecture = data.lectures[i];
-    if (lecture.slug === newSlug) {
-      break;
-    }
-  }
-    const [{
-        slug, title, category,
-        image, thumbnail, content,
-      }] = data.lectures[i];
-    const header = document.querySelector('.header');
-    header.querySelector('header__category').appendChild(el('p',category));
-    header.querySelector('header__title').appendChild(el('p',title));
-    const contentDiv = document.querySelector('.content');
->>>>>>> 87977167a3bdecfbcd5f1e11795aa981ce27583f
 }
 
 function fetchData(slug) {
@@ -85,7 +60,6 @@ function fetchData(slug) {
         return response.json();
       }
 
-<<<<<<< HEAD
       throw new Error('Villa kom upp');
     })
     .then((data) => {
@@ -95,19 +69,7 @@ function fetchData(slug) {
       console.error(error);
     });
 }
-function initPage() {
-  console.log("MAMAM");
+export default function initPage() {
+  console.log("komst");
   fetchData('html-sagan');
 }
-initPage();
-=======
-        throw new Error('Villa kom upp');
-      })
-      .then((data) => {
-        createContent(data.lectures, slug);
-      })
-      .catch((error) => {
-        console.error(error);
-        });
- }
->>>>>>> 87977167a3bdecfbcd5f1e11795aa981ce27583f
