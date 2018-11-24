@@ -16,14 +16,16 @@ html { /* stylelint-disable-line */
   overflow-x: hidden;
   overflow-y: scroll; // alltaf hafa y skrollbar
 
-  font-family: $font-main;
+  font-family: $font-main, serif;
   font-size: 16px;
 }
 
 img { /* stylelint-disable-line */
   max-width: 100%;
 }
-
+.hidden{
+  display: none;
+}
 main {
   margin: 0 auto;
   max-width: $max-width;
