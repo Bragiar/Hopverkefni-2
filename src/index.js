@@ -1,6 +1,6 @@
 
 import List from './lib/list';
-import initPage from './lib/content';
+import {initPage} from './lib/content';
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const isLecturePage = page.classList.contains('lecture-page');
 
   if (isLecturePage) {
+    console.log('Fyrirlestrarsíða');
     initPage();
   } else {
     const list = new List();
