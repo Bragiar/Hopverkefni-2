@@ -8,7 +8,6 @@ export default class List {
 
   load() {
     empty(this.container);
-    console.log('komst i list');
     this.fetchData();
   }
 
@@ -35,11 +34,9 @@ export default class List {
       slug, title, category, thumbnail,
     } = data;
     const container = el('div');
-    container.classList.add('lecture');
-    console.log(slug)
+    container.classList.add('lecture', `${category}`);
     container.myslug = slug;
     container.addEventListener('click', this.lecturePage, false);
-    container.myslug = `${slug}`;
     this.container.appendChild(container);
     const imgdiv = el('div');
     imgdiv.classList.add('lecture__image');
@@ -64,7 +61,7 @@ export default class List {
   }
 
   loadCards(json) {
-    for (let i = 0; i < json.lectures.length; i+=1) {
+    for (let i = 0; i < json.lectures.length; i +=1 ) {
       this.createCards(json.lectures[i]);
     }
   }
