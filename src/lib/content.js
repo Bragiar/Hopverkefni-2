@@ -13,9 +13,8 @@ export function initPage() {
 function createContent(data, newSlug) {
   console.log(data);
   let i;
-  for (i = 0; i < data.length; i+= 1) {
-    let lecture = data.lectures[i];
-    if (lecture.slug === newSlug) {
+  for (i = 0; i < data.lectures.length; i += 1) {
+    if (data.lectures[i].slug === newSlug) {
       break;
     }
   }

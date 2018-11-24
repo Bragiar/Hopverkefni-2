@@ -1,6 +1,7 @@
 
 import List from './lib/list';
 import {initPage} from './lib/content';
+import initButtons from './lib/filter';
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -12,5 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     const list = new List();
     list.load();
+    initButtons();
   }
 });

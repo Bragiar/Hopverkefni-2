@@ -15,6 +15,10 @@
   padding-right: ($gutter/2);;
   padding-left: ($gutter/2);
   margin-bottom: $gutter;
+
+  &--hidden{
+    display: none;
+  }
 }
 .buttons button{
   border-radius: 5px;
