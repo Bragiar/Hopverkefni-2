@@ -1,26 +1,41 @@
 @import "config";
-
 .header{
-  background-image: image('./img/header.jpg');
-  width: 100vw;
-  height: 50vh;
-
-  &__p{
-    padding-bottom: 1rem;
+  background-color: rgba(255, 255, 255, 0.6);
+  background-image: url("../img/header.jpg");
+  background-blend-mode:screen;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 60vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  @media(max-width: 1200px){
+    height: 40vh;
+  }
+  @media(max-width: 1000px){
+    height: 30vh;
+  }
+  @media(max-width: 800px){
+    height: 20vh;
+  }
+  &__title {
+  display: flex;
+  align-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  }
+  p {
+    padding-bottom: 1em;
     text-transform: uppercase;
-    font-size: 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    font-size: 1em;
     text-align: center;
+    margin-top: auto;
+    font-family: 'Roboto Mono', monospace;
   }
 
-  &__h2{
-    font-size: 3rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
+  h2{
+    font-size: 3em;
+    margin-bottom: auto;
+    font-family: 'Roboto Mono', monospace;
   }
 }
-
