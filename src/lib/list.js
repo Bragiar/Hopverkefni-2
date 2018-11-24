@@ -36,7 +36,8 @@ export default class List {
     } = data;
     const container = el('div');
     container.classList.add('lecture');
-    container.addEventListener('click', this.lecturePage);
+    container.slug = `${slug}`;
+    container.addEventListener('click', this.lecturePage(slug), false);
     this.container.appendChild(container);
     const imgdiv = el('div');
     imgdiv.classList.add('lecture__image');
@@ -66,14 +67,13 @@ export default class List {
     }
   }
 
-  lecturePage(e) {
+  lecturePage(newSlug) {
+  console.log("ýtt á: " + newSlug);
   const url = window.location.search;
   console.log(url);
-  const newSlug = e.slug;
-  const newURL = `${url}` + '?slug=' `${newSlug}`;
+  const newURL = `${url}` + '?slug=' + `${newSlug}`;
   console.log(newURL);
-  window.location.assign(newURL);
-  window.location.reload(true);
+  //window.location.assign(newURL);
   }
 
 }
