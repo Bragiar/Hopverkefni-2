@@ -1,13 +1,5 @@
 import { empty, el } from './helpers';
 
-<<<<<<< HEAD
-
-
-
- 
-=======
->>>>>>> 6e25f1e6cb02bd3837819d5f27b7ec829da4e300
-
 export default class List {
   constructor() {
     this.container = document.querySelector('.lectures');
