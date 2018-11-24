@@ -36,8 +36,10 @@ export default class List {
     } = data;
     const container = el('div');
     container.classList.add('lecture');
-    container.slug = `${slug}`;
-    container.addEventListener('click', this.lecturePage(slug), false);
+    console.log(slug)
+    container.myslug = slug;
+    container.addEventListener('click', this.lecturePage, false);
+    container.myslug = `${slug}`;
     this.container.appendChild(container);
     const imgdiv = el('div');
     imgdiv.classList.add('lecture__image');
@@ -62,18 +64,19 @@ export default class List {
   }
 
   loadCards(json) {
-    for(let i = 0; i < json.lectures.length; i++) {
+    for (let i = 0; i < json.lectures.length; i+=1) {
       this.createCards(json.lectures[i]);
     }
   }
 
-  lecturePage(newSlug) {
-  console.log("ýtt á: " + newSlug);
-  const url = window.location.search;
+  lecturePage(e) {
+  console.log("ýtt á: ", e.currentTarget.myslug);
+  const url = window.location.href;
   console.log(url);
-  const newURL = `${url}` + '?slug=' + `${newSlug}`;
+  const newURL = `${url}` + 'fyrirlestur.html?slug=' + `${e.currentTarget.myslug}`;
   console.log(newURL);
-  //window.location.assign(newURL);
+  window.location.assign(newURL);
+  //window.location.reload(true);
   }
 
 }
