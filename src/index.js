@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const isLecturePage = page.classList.contains('lecture-page');
 
   if (isLecturePage) {
-    console.log('Fyrirlestrarsíða');
     initPage();
   } else {
     const list = new List();

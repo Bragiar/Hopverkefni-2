@@ -6,13 +6,14 @@ const contentDiv = document.querySelector('.content');
 
 export function initPage() {
   const slug = window.location.search.substring(1).split("=")[1];
+  console.log(slug);
   fetchData(slug);
 }
 
 function createContent(data, newSlug) {
   console.log(data);
   let i;
-  for (i = 0; i < data.length; i++) {
+  for (i = 0; i < data.length; i+= 1) {
     let lecture = data.lectures[i];
     if (lecture.slug === newSlug) {
       break;
@@ -47,7 +48,7 @@ function elementBuilder(array)  {
   } else if (array.type === 'quote') {
     const quote = contentDiv.appendChild(el('blockquote', `${array.data}`));
     quote.classList.add('content__quote');
-    quote.appendChild(el('cite',`${array.attribute}`));
+    quote.appendChild(el('cite', `${array.attribute}`));
   } else if (array.type === 'image') {
     const figure = contentDiv.appendChild(el('figure'));
     figure.appendChild(el('img')).setAttribute('src', `${array.data}`);
@@ -56,11 +57,11 @@ function elementBuilder(array)  {
     contentDiv.appendChild(el('h2', `${array.data}`));
   } else if (array.type === 'list') {
     const list = contentDiv.appendChild(el('ul'));
-    for (let i = 0; i<array.data.length; i+=1) {
-      list.appendChild(el('li',`${array.data[i]}`));
+    for (let i = 0; i < array.data.length; i += 1) {
+      list.appendChild(el('li', `${array.data[i]}`));
     }
   } else if (array.type === 'code') {
-    contentDiv.appendChild(el('code',`${array.data}`));
+    contentDiv.appendChild(el('code', `${array.data}`));
   }
 }
 
