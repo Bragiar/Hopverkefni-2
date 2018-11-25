@@ -50,13 +50,13 @@ export default class List {
     info.classList.add('lecture__info');
     container.appendChild(info);
     const infoCategory = el('div', category);
-    infoCategory.classList.add('lecture__info--category');
+    infoCategory.classList.add('lecture__info__category');
     info.appendChild(infoCategory);
     const infoTitle = el('div', title);
-    infoCategory.classList.add('lecture__info--category');
+    infoTitle.classList.add('lecture__info__title');
     info.appendChild(infoTitle);
     const infoCheck = el('div', '✓');
-    infoCheck.classList.add('lecture__info--check', 'hidden');
+    infoCheck.classList.add('lecture__info__check', 'hidden');
     this.checkIfDone(infoCheck, slug);
     info.appendChild(infoCheck);
     this.container.appendChild(container);
@@ -85,5 +85,4 @@ export default class List {
       }
     }
   }
-
 }
