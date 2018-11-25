@@ -1,5 +1,5 @@
 import {el} from './helpers';
-import {save} from './storage';
+import {save, checkIfDone} from './storage';
 
 const jsonData = '../../lectures.json';
 const contentDiv = document.querySelector('.content');
@@ -11,6 +11,10 @@ export function initPage() {
   newSlug = window.location.search.substring(1).split("=")[1];
   fetchData(newSlug);
   doneButton.addEventListener('click', done);
+  if(checkIfDone(newSlug)){
+    doneButton.innerHTML = '✓ Fyrirlestur kláraður';
+    doneButton.classList.toggle('lctButtons--done');
+  }
 }
 
 function createContent(data, newSlug) {
@@ -33,7 +37,6 @@ function createContent(data, newSlug) {
   header.querySelector('.header__category').appendChild(el('p', category));
   header.querySelector('.header__title').appendChild(el('p', title));
   if(typeof image === 'undefined' || `${image}` === '/img/code3.jpg'){
-    console.log('engin mynd');
     header.style.backgroundColor= '$Grey';
   } else {
   header.style.backgroundImage = 'url(../' + `${image}` + ')';
@@ -90,8 +93,14 @@ function fetchData(slug) {
 }
 
 
-function done(){
-  console.log(newSlug, 'kláraður');
-  save(newSlug, true);
-  doneButton.innerHTML = '✓ fyrirlestur kláraður';
+function done() {
+  if(checkIfDone(newSlug)){
+    save(newSlug, false);
+    doneButton.innerHTML = 'Klára fyrirlestur';
+    doneButton.classList.toggle('lctButtons--done');
+  } else {
+    save(newSlug, true);
+    doneButton.innerHTML = '✓ Fyrirlestur kláraður';
+    doneButton.classList.toggle('lctButtons--done');
+  }
 }

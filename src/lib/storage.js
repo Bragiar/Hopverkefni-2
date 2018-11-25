@@ -34,8 +34,27 @@ export function save(slecture, sdone) {
     window.localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(arrayData1));
   } else {
     const data = JSON.parse(arrayData);
+    for (let i = 0; i < data.length; i += 1) {
+      if(slecture === data[i].lecture){
+        data[i].done = sdone;
+      }
+    }
     data.push(newLecture);
     window.localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(data));
   }
   // todo útfæra
 }
+
+export function checkIfDone(slug){
+  const arrayData = window.localStorage.getItem(LOCALSTORAGE_KEY);
+  if (arrayData === null) {
+    return false;
+  } else {
+      const data = JSON.parse(arrayData);
+      for (let i = 0; i < data.length; i += 1) {
+        if(slug === data[i].lecture && data[i].done === true){
+          return true;
+        }
+      }  
+    }
+}      

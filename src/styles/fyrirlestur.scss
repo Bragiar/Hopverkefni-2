@@ -19,20 +19,22 @@ iframe{
 .lctButtons{
     display: flex;
     flex-direction: column;
-    justify-content: center;
 
     &__done{
-        height: 30px;
-        width: 100px;
-        background-color: $Grey;
-        border-radius: 2px;
-        margin: 20px auto;
+        font-size: 1.5em;
+        text-align: center;
+        margin: $gutter 0;
+        cursor: pointer;
     }
     &__back{
-        height: 30px;
-        width: 100px;
-        background-color: $Grey;
-        border-radius: 2px;
-        margin: 20px auto;
+        margin: $gutter 0;
+        text-align: center;
+        font-size: 1.5em;
+        cursor: pointer; 
+        text-decoration: none;
+        color: black;  
+    }
+    &--done{
+        color: $lightGreen;
     }
 }
