@@ -1,13 +1,16 @@
 import {el} from './helpers';
+import {save} from './storage';
 
 const jsonData = '../../lectures.json';
 const contentDiv = document.querySelector('.content');
+const doneButton = document.querySelector('.lctButtons__done');
+let newSlug;
 
 
 export function initPage() {
-  const slug = window.location.search.substring(1).split("=")[1];
-  console.log(slug);
-  fetchData(slug);
+  newSlug = window.location.search.substring(1).split("=")[1];
+  fetchData(newSlug);
+  doneButton.addEventListener('click', done);
 }
 
 function createContent(data, newSlug) {
@@ -84,4 +87,11 @@ function fetchData(slug) {
     .catch((error) => {
       console.error(error);
     });
+}
+
+
+function done(){
+  console.log(newSlug, 'kláraður');
+  save(newSlug, true);
+  doneButton.innerHTML = '✓ fyrirlestur kláraður';
 }

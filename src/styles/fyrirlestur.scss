@@ -16,3 +16,23 @@ iframe{
     height: 400px;
     margin-bottom: 20px;
 }
+.lctButtons{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &__done{
+        height: 30px;
+        width: 100px;
+        background-color: $Grey;
+        border-radius: 2px;
+        margin: 20px auto;
+    }
+    &__back{
+        height: 30px;
+        width: 100px;
+        background-color: $Grey;
+        border-radius: 2px;
+        margin: 20px auto;
+    }
+}

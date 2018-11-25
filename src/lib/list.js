@@ -1,4 +1,5 @@
 import { empty, el } from './helpers';
+import {load} from './storage';
 
 export default class List {
   constructor() {
@@ -56,6 +57,7 @@ export default class List {
     info.appendChild(infoTitle);
     const infoCheck = el('div', '✓');
     infoCheck.classList.add('lecture__info--check', 'hidden');
+    this.checkIfDone(infoCheck, slug);
     info.appendChild(infoCheck);
     this.container.appendChild(container);
   }
@@ -67,13 +69,21 @@ export default class List {
   }
 
   lecturePage(e) {
-  console.log("ýtt á: ", e.currentTarget.myslug);
   const url = window.location.href;
-  console.log(url);
   const newURL = `${url}` + 'fyrirlestur.html?slug=' + `${e.currentTarget.myslug}`;
-  console.log(newURL);
   window.location.assign(newURL);
   //window.location.reload(true);
+  }
+
+  checkIfDone(check, slug){
+    const lectureArray = load();
+    if(lectureArray !== null){
+      for (let i = 0; i < lectureArray.length; i += 1) {
+        if(slug === lectureArray[i].lecture && lectureArray[i].done === true){
+          check.classList.remove('hidden');
+        }
+      }
+    }
   }
 
 }
