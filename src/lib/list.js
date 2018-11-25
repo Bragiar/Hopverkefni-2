@@ -49,12 +49,15 @@ export default class List {
     const info = el('div');
     info.classList.add('lecture__info');
     container.appendChild(info);
+    const infotext = el('div');
+    infotext.classList.add('lecture__text');
+    info.appendChild(infotext);
     const infoCategory = el('div', category);
     infoCategory.classList.add('lecture__info__category');
-    info.appendChild(infoCategory);
+    infotext.appendChild(infoCategory);
     const infoTitle = el('div', title);
     infoTitle.classList.add('lecture__info__title');
-    info.appendChild(infoTitle);
+    infotext.appendChild(infoTitle);
     const infoCheck = el('div', '✓');
     infoCheck.classList.add('lecture__info__check', 'hidden');
     this.checkIfDone(infoCheck, slug);
@@ -69,8 +72,8 @@ export default class List {
   }
 
   lecturePage(e) {
-  const url = window.location.href;
-  const newURL = `${url}` + 'fyrirlestur.html?slug=' + `${e.currentTarget.myslug}`;
+  const url = window.location.hostname;
+  const newURL = 'fyrirlestur.html?slug=' + `${e.currentTarget.myslug}`;
   window.location.assign(newURL);
   //window.location.reload(true);
   }

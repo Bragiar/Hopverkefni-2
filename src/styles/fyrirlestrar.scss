@@ -26,8 +26,22 @@
     height: 80%;
   }
   &__info{
+    display: flex;
+    flex-direction: row;
     height: 20%;
     background-color: $Grey;
+
+    &__check{
+      font-size: 3em;
+      color: $lightGreen;
+      width: 30%;
+      text-align: center;
+    }
+  }
+  &__text{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
   }
 
 }
