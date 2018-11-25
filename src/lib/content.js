@@ -29,7 +29,12 @@ function createContent(data, newSlug) {
   const header = document.querySelector('.header');
   header.querySelector('.header__category').appendChild(el('p', category));
   header.querySelector('.header__title').appendChild(el('p', title));
-  header.style.backgroundImage = `${image}`;
+  if(typeof image === 'undefined' || `${image}` === '/img/code3.jpg'){
+    console.log('engin mynd');
+    header.style.backgroundColor= '$Grey';
+  } else {
+  header.style.backgroundImage = 'url(../' + `${image}` + ')';
+  }
     for(let i = 0; i<content.length; i += 1) {
       elementBuilder(content[i]);
     }
