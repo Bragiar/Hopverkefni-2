@@ -42,10 +42,15 @@ export default class List {
     const imgdiv = el('div');
     imgdiv.classList.add('lecture__image');
     container.appendChild(imgdiv);
-    const img = el('img');
+    if(typeof thumbnail === 'undefined'){
+      imgdiv.style.backgroundColor = '#aaa';
+      console.log("ekkert thumbnail");
+    } else {
+     const img = el('img');
     img.classList.add('image');
     img.setAttribute('src', thumbnail);
     imgdiv.appendChild(img);
+    }
     const info = el('div');
     info.classList.add('lecture__info');
     container.appendChild(info);
