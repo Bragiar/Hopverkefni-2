@@ -50,10 +50,10 @@ export default class List {
     info.classList.add('lecture__info');
     container.appendChild(info);
     const infoCategory = el('div', category);
-    infoCategory.classList.add('.lecture__info--category');
+    infoCategory.classList.add('lecture__info--category');
     info.appendChild(infoCategory);
     const infoTitle = el('div', title);
-    infoCategory.classList.add('.lecture__info--category');
+    infoCategory.classList.add('lecture__info--category');
     info.appendChild(infoTitle);
     const infoCheck = el('div', '✓');
     infoCheck.classList.add('lecture__info--check', 'hidden');
