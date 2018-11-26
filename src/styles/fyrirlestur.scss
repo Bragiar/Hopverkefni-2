@@ -8,7 +8,19 @@
         margin: 20px 0;
     }
     &__quote{
-        margin: 20px 0;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        margin: 20px -20px;
+        background-color: $Grey;
+        cite{
+            padding: 10px 0;
+            font-weight: bold;
+
+        }
+    }
+    code{
+        white-space: pre-wrap;
     }
 }
 iframe{  
@@ -38,3 +50,4 @@ iframe{
         color: $lightGreen;
     }
 }
+

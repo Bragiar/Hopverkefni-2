@@ -62,7 +62,9 @@ function elementBuilder(array) {
   } else if (array.type === 'image') {
     const figure = contentDiv.appendChild(el('figure'));
     figure.appendChild(el('img')).setAttribute('src', `${array.data}`);
-    figure.appendChild(el('figcaption', `${array.caption}`));
+    if(typeof array.caption !== 'undefined'){
+      figure.appendChild(el('figcaption', `${array.caption}`));
+    }
   } else if (array.type === 'heading') {
     contentDiv.appendChild(el('h2', `${array.data}`));
   } else if (array.type === 'list') {
@@ -74,7 +76,6 @@ function elementBuilder(array) {
     contentDiv.appendChild(el('code', `${array.data}`));
   }
 }
-
 function fetchData(slug) {
   fetch(jsonData)
     .then((response) => {
