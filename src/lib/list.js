@@ -61,7 +61,7 @@ export default class List {
   }
 
   loadCards(json) {
-    for (let i = 0; i < json.lectures.length; i +=1 ) {
+    for (let i = 0; i < json.lectures.length; i += 1 ){
       this.createCards(json.lectures[i]);
     }
   }
