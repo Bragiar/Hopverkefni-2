@@ -12,9 +12,9 @@ const LOCALSTORAGE_KEY = 'lectures_done';
  * @returns {array} Raðað fylki af svörum eða tóma fylkið ef ekkert vistað.
  */
 export function load() {
-    const arrayData = JSON.parse(window.localStorage.getItem(LOCALSTORAGE_KEY));
-    return arrayData;
-    // todo útfæra
+  const arrayData = JSON.parse(window.localStorage.getItem(LOCALSTORAGE_KEY));
+  return arrayData;
+  // todo útfæra
 }
 
 /**
@@ -24,18 +24,18 @@ export function load() {
  * @param {number} points Stig sem á að vista
  */
 export function save(slecture, sdone) {
-    const newLecture = {
-      lecture: slecture,
-      done: sdone,
-    };
-    const arrayData = window.localStorage.getItem(LOCALSTORAGE_KEY);
+  const newLecture = {
+    lecture: slecture,
+    done: sdone,
+  };
+  const arrayData = window.localStorage.getItem(LOCALSTORAGE_KEY);
   if (arrayData === null) {
     const arrayData1 = [newLecture];
     window.localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(arrayData1));
   } else {
     const data = JSON.parse(arrayData);
     for (let i = 0; i < data.length; i += 1) {
-      if(slecture === data[i].lecture){
+      if (slecture === data[i].lecture) {
         data[i].done = sdone;
       }
     }
@@ -45,16 +45,15 @@ export function save(slecture, sdone) {
   // todo útfæra
 }
 
-export function checkIfDone(slug){
+export function checkIfDone(slug) {
   const arrayData = window.localStorage.getItem(LOCALSTORAGE_KEY);
   if (arrayData === null) {
     return false;
-  } else {
-      const data = JSON.parse(arrayData);
-      for (let i = 0; i < data.length; i += 1) {
-        if(slug === data[i].lecture && data[i].done === true){
-          return true;
-        }
-      }  
+  }
+  const data = JSON.parse(arrayData);
+  for (let i = 0; i < data.length; i += 1) {
+    if (slug === data[i].lecture && data[i].done === true) {
+      return true;
     }
-}      
+  }
+}

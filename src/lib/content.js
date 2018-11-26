@@ -1,52 +1,12 @@
-import {el} from './helpers';
-import {save, checkIfDone} from './storage';
+import { el } from './helpers';
+import { save, checkIfDone } from './storage';
 
 const jsonData = '../../lectures.json';
 const contentDiv = document.querySelector('.content');
 const doneButton = document.querySelector('.lctButtons__done');
 let newSlug;
 
-
-export function initPage() {
-  newSlug = window.location.search.substring(1).split("=")[1];
-  fetchData(newSlug);
-  doneButton.addEventListener('click', done);
-  if(checkIfDone(newSlug)){
-    doneButton.innerHTML = '✓ Fyrirlestur kláraður';
-    doneButton.classList.toggle('lctButtons--done');
-  }
-}
-
-function createContent(data, newSlug) {
-  console.log(data);
-  let i;
-  for (i = 0; i < data.lectures.length; i += 1) {
-    if (data.lectures[i].slug === newSlug) {
-      break;
-    }
-  }
-  const {
-    slug,
-    title,
-    category,
-    image,
-    thumbnail,
-    content,
-  } = data.lectures[i];
-  const header = document.querySelector('.header');
-  header.querySelector('.header__category').appendChild(el('p', category));
-  header.querySelector('.header__title').appendChild(el('p', title));
-  if(typeof image === 'undefined' || `${image}` === '/img/code3.jpg'){
-    header.style.backgroundColor= '$Grey';
-  } else {
-  header.style.backgroundImage = 'url(../' + `${image}` + ')';
-  }
-    for(let i = 0; i<content.length; i += 1) {
-      elementBuilder(content[i]);
-    }
-}
-
-function elementBuilder(array)  {
+function elementBuilder(array) {
   if (array.type === 'youtube') {
     const video = contentDiv.appendChild(el('iframe'));
     video.classList.add('content__video');
@@ -75,6 +35,44 @@ function elementBuilder(array)  {
   }
 }
 
+function createContent(data, _newSlug) {
+  let i;
+  for (i = 0; i < data.lectures.length; i += 1) {
+    if (data.lectures[i].slug === _newSlug) {
+      break;
+    }
+  }
+  const {
+    // slug,
+    title,
+    category,
+    image,
+    // thumbnail,
+    content,
+  } = data.lectures[i];
+  const header = document.querySelector('.header');
+  header.querySelector('.header__category').appendChild(el('p', category));
+  header.querySelector('.header__title').appendChild(el('p', title));
+  if (typeof image === 'undefined' || `${image}` === '/img/code3.jpg') {
+    header.style.backgroundColor = '$Grey';
+  } else {
+    header.style.backgroundImage = `url(../${image})`;
+  }
+  for (let k = 0; k < content.length; k += 1) {
+    elementBuilder(content[k]);
+  }
+}
+function done() {
+  if (checkIfDone(newSlug)) {
+    save(newSlug, false);
+    doneButton.innerHTML = 'Klára fyrirlestur';
+    doneButton.classList.toggle('lctButtons--done');
+  } else {
+    save(newSlug, true);
+    doneButton.innerHTML = '✓ Fyrirlestur kláraður';
+    doneButton.classList.toggle('lctButtons--done');
+  }
+}
 function fetchData(slug) {
   fetch(jsonData)
     .then((response) => {
@@ -92,14 +90,11 @@ function fetchData(slug) {
     });
 }
 
-
-function done() {
-  if(checkIfDone(newSlug)){
-    save(newSlug, false);
-    doneButton.innerHTML = 'Klára fyrirlestur';
-    doneButton.classList.toggle('lctButtons--done');
-  } else {
-    save(newSlug, true);
+export default function initPage() {
+  newSlug = window.location.search.substring(1).split('=')[1]; /* eslint-disable-line */
+  fetchData(newSlug);
+  doneButton.addEventListener('click', done);
+  if (checkIfDone(newSlug)) {
     doneButton.innerHTML = '✓ Fyrirlestur kláraður';
     doneButton.classList.toggle('lctButtons--done');
   }
