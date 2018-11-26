@@ -8,7 +8,7 @@
   background-blend-mode:screen;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 60vh;
+  height: 50vh;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -28,7 +28,7 @@
   flex-direction: column;
   }
   p {
-    padding-bottom: 1em;
+    padding-bottom: ($gutter/2);
     text-transform: uppercase;
     font-size: 1em;
     text-align: center;

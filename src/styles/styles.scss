@@ -1,5 +1,7 @@
 @import "config";
-
+@import "fyrirlestrar";
+@import "fyrirlestur";
+@import "header";
 * {
   padding: 0;
   margin: 0;
@@ -30,9 +32,7 @@ main {
   margin: 0 auto;
   max-width: $max-width;
   padding-left: $gutter;
-  padding-right: $gutter;
+  padding-right: $gutter
 }
 
-@import "fyrirlestrar";
-@import "fyrirlestur";
-@import "header";
+

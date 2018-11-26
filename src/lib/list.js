@@ -1,4 +1,5 @@
 import { empty, el } from './helpers';
+import {load} from './storage';
 
 export default class List {
   constructor() {
@@ -41,21 +42,30 @@ export default class List {
     const imgdiv = el('div');
     imgdiv.classList.add('lecture__image');
     container.appendChild(imgdiv);
-    const img = el('img');
+    if(typeof thumbnail === 'undefined'){
+      imgdiv.style.backgroundColor = '#aaa';
+      console.log("ekkert thumbnail");
+    } else {
+     const img = el('img');
     img.classList.add('image');
     img.setAttribute('src', thumbnail);
     imgdiv.appendChild(img);
+    }
     const info = el('div');
     info.classList.add('lecture__info');
     container.appendChild(info);
+    const infotext = el('div');
+    infotext.classList.add('lecture__text');
+    info.appendChild(infotext);
     const infoCategory = el('div', category);
-    infoCategory.classList.add('.lecture__info--category');
-    info.appendChild(infoCategory);
+    infoCategory.classList.add('lecture__info__category');
+    infotext.appendChild(infoCategory);
     const infoTitle = el('div', title);
-    infoCategory.classList.add('.lecture__info--category');
-    info.appendChild(infoTitle);
+    infoTitle.classList.add('lecture__info__title');
+    infotext.appendChild(infoTitle);
     const infoCheck = el('div', '✓');
-    infoCheck.classList.add('lecture__info--check', 'hidden');
+    infoCheck.classList.add('lecture__info__check', 'hidden');
+    this.checkIfDone(infoCheck, slug);
     info.appendChild(infoCheck);
     this.container.appendChild(container);
   }
@@ -67,13 +77,20 @@ export default class List {
   }
 
   lecturePage(e) {
-  console.log("ýtt á: ", e.currentTarget.myslug);
-  const url = window.location.href;
-  console.log(url);
-  const newURL = `${url}` + 'fyrirlestur.html?slug=' + `${e.currentTarget.myslug}`;
-  console.log(newURL);
+  const url = window.location.hostname;
+  const newURL = 'fyrirlestur.html?slug=' + `${e.currentTarget.myslug}`;
   window.location.assign(newURL);
   //window.location.reload(true);
   }
 
+  checkIfDone(check, slug){
+    const lectureArray = load();
+    if(lectureArray !== null){
+      for (let i = 0; i < lectureArray.length; i += 1) {
+        if(slug === lectureArray[i].lecture && lectureArray[i].done === true){
+          check.classList.remove('hidden');
+        }
+      }
+    }
+  }
 }
