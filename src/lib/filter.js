@@ -9,7 +9,6 @@ export default function initButtons() {
 }
 
 function filter(e) {
-  console.log(e.target.classList);
   e.target.classList.toggle('untoggled');
   filterItems();
 }

@@ -34,12 +34,17 @@ export function save(slecture, sdone) {
     window.localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(arrayData1));
   } else {
     const data = JSON.parse(arrayData);
+    let ifNotDone = true;
     for (let i = 0; i < data.length; i += 1) {
       if (slecture === data[i].lecture) {
         data[i].done = sdone;
+        ifNotDone = false;
+        break;
       }
     }
-    data.push(newLecture);
+    if (ifNotDone) {
+      data.push(newLecture);
+    }
     window.localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(data));
   }
   // todo útfæra
@@ -56,4 +61,5 @@ export function checkIfDone(slug) {
       return true;
     }
   }
+  return false;
 }
