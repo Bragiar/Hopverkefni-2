@@ -1,6 +1,6 @@
 import { empty, el } from './helpers';
 
- function createCards(data) {
+function createCards(data) {
   if (data.length === 0) {
     alert('Fann ekki lén');
     return;
@@ -12,7 +12,7 @@ import { empty, el } from './helpers';
   console.log(slug, title, category, thumbnail);
   const container = el('div');
   container.classList.add('lecture');
-  //container.addEventListener('click', slug(slug));
+  // container.addEventListener('click', slug(slug));
   this.container.appendChild(container);
   const imgdiv = el('div');
   imgdiv.classList.add('lecture__image');
@@ -73,7 +73,7 @@ export default class List {
     console.log(slug, title, category, thumbnail);
     const container = el('div');
     container.classList.add('lecture');
-    //container.addEventListener('click',loadCards);
+    // container.addEventListener('click',loadCards);
     this.container.appendChild(container);
     const imgdiv = el('div');
     imgdiv.classList.add('lecture__image');
@@ -99,7 +99,7 @@ export default class List {
 
   loadCards(json) {
     console.log(json);
-    for(let i = 0; i < json.lectures.length; i++) {
+    for (let i = 0; i < json.lectures.length; i++) {
       console.log(json.lectures);
       this.createCards(json.lectures[i]);
     }

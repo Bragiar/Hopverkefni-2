@@ -1,5 +1,5 @@
-import {el} from './helpers';
-import {save, checkIfDone} from './storage';
+import { el } from './helpers';
+import { save, checkIfDone } from './storage';
 
 const jsonData = '../../lectures.json';
 const contentDiv = document.querySelector('.content');
@@ -8,10 +8,10 @@ let newSlug;
 
 
 export function initPage() {
-  newSlug = window.location.search.substring(1).split("=")[1];
+  newSlug = window.location.search.substring(1).split('=')[1];
   fetchData(newSlug);
   doneButton.addEventListener('click', done);
-  if(checkIfDone(newSlug)){
+  if (checkIfDone(newSlug)) {
     doneButton.innerHTML = '✓ Fyrirlestur kláraður';
     doneButton.classList.toggle('lctButtons--done');
   }
@@ -36,17 +36,17 @@ function createContent(data, newSlug) {
   const header = document.querySelector('.header');
   header.querySelector('.header__category').appendChild(el('p', category));
   header.querySelector('.header__title').appendChild(el('p', title));
-  if(typeof image === 'undefined' || `${image}` === '/img/code3.jpg'){
-    header.style.backgroundColor= '$Grey';
+  if (typeof image === 'undefined' || `${image}` === '/img/code3.jpg') {
+    header.style.backgroundColor = '$Grey';
   } else {
-  header.style.backgroundImage = 'url(../' + `${image}` + ')';
+    header.style.backgroundImage = 'url(../' + `${image}` + ')';
   }
-    for(let i = 0; i<content.length; i += 1) {
-      elementBuilder(content[i]);
-    }
+  for (let i = 0; i < content.length; i += 1) {
+    elementBuilder(content[i]);
+  }
 }
 
-function elementBuilder(array)  {
+function elementBuilder(array) {
   if (array.type === 'youtube') {
     const video = contentDiv.appendChild(el('iframe'));
     video.classList.add('content__video');
@@ -94,7 +94,7 @@ function fetchData(slug) {
 
 
 function done() {
-  if(checkIfDone(newSlug)){
+  if (checkIfDone(newSlug)) {
     save(newSlug, false);
     doneButton.innerHTML = 'Klára fyrirlestur';
     doneButton.classList.toggle('lctButtons--done');

@@ -1,5 +1,5 @@
 import { empty, el } from './helpers';
-import {load} from './storage';
+import { load } from './storage';
 
 export default class List {
   constructor() {
@@ -42,14 +42,14 @@ export default class List {
     const imgdiv = el('div');
     imgdiv.classList.add('lecture__image');
     container.appendChild(imgdiv);
-    if(typeof thumbnail === 'undefined'){
+    if (typeof thumbnail === 'undefined') {
       imgdiv.style.backgroundColor = '#aaa';
-      console.log("ekkert thumbnail");
+      console.log('ekkert thumbnail');
     } else {
-     const img = el('img');
-    img.classList.add('image');
-    img.setAttribute('src', thumbnail);
-    imgdiv.appendChild(img);
+      const img = el('img');
+      img.classList.add('image');
+      img.setAttribute('src', thumbnail);
+      imgdiv.appendChild(img);
     }
     const info = el('div');
     info.classList.add('lecture__info');
@@ -71,23 +71,23 @@ export default class List {
   }
 
   loadCards(json) {
-    for (let i = 0; i < json.lectures.length; i +=1 ) {
+    for (let i = 0; i < json.lectures.length; i += 1) {
       this.createCards(json.lectures[i]);
     }
   }
 
   lecturePage(e) {
-  const url = window.location.hostname;
-  const newURL = 'fyrirlestur.html?slug=' + `${e.currentTarget.myslug}`;
-  window.location.assign(newURL);
-  //window.location.reload(true);
+  // const url = window.location.hostname;
+    const newURL = 'fyrirlestur.html?slug=' + `${e.currentTarget.myslug}`;
+    window.location.assign(newURL);
+  // window.location.reload(true);
   }
 
-  checkIfDone(check, slug){
+  checkIfDone(check, slug) {
     const lectureArray = load();
-    if(lectureArray !== null){
+    if (lectureArray !== null) {
       for (let i = 0; i < lectureArray.length; i += 1) {
-        if(slug === lectureArray[i].lecture && lectureArray[i].done === true){
+        if (slug === lectureArray[i].lecture && lectureArray[i].done === true) {
           check.classList.remove('hidden');
         }
       }

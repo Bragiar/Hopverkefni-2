@@ -1,6 +1,6 @@
 
 import List from './lib/list';
-import {initPage} from './lib/content';
+import { initPage } from './lib/content';
 import initButtons from './lib/filter';
 
 
