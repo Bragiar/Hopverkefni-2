@@ -2,24 +2,13 @@ const HTMLbutton = document.querySelector('.HTML');
 const CSSbutton = document.querySelector('.CSS');
 const JSbutton = document.querySelector('.JS');
 
-export default function initButtons() {
-  HTMLbutton.addEventListener('click', filter);
-  CSSbutton.addEventListener('click', filter);
-  JSbutton.addEventListener('click', filter);
-}
-
-function filter(e) {
-  e.target.classList.toggle('untoggled');
-  filterItems();
-}
-
 function filterItems() {
   const htmlUntoggled = HTMLbutton.classList.contains('untoggled');
   const cssUntoggled = CSSbutton.classList.contains('untoggled');
   const jsUntoggled = JSbutton.classList.contains('untoggled');
 
   const lectures = document.querySelector('.lectures');
-  const children = lectures.children;
+  const children = lectures.children; /* eslint-disable-line*/
   if (htmlUntoggled && cssUntoggled && jsUntoggled) {
     for (let i = 0; i < children.length; i += 1) {
       const lecture = children[i];
@@ -46,4 +35,14 @@ function filterItems() {
       }
     }
   }
+}
+
+function filter(e) {
+  e.target.classList.toggle('untoggled');
+  filterItems();
+}
+export default function initButtons() {
+  HTMLbutton.addEventListener('click', filter);
+  CSSbutton.addEventListener('click', filter);
+  JSbutton.addEventListener('click', filter);
 }

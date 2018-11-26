@@ -1,53 +1,63 @@
-@import "config";
 
-.content{
-    max-width: 795px;
-    margin: auto;
-    
-    &__text{
-        margin: 20px 0;
-    }
-    &__quote{
-        display: flex;
-        flex-direction: column;
-        padding: 20px;
-        margin: 20px -20px;
-        background-color: $Grey;
-        cite{
-            padding: 10px 0;
-            font-weight: bold;
+.content {
+  max-width: 795px;
+  margin: auto;
 
-        }
-    }
-    code{
-        white-space: pre-wrap;
-    }
-}
-iframe{  
-    width: 100%;
-    height: 400px;
-    margin-bottom: 20px;
-}
-.lctButtons{
+  > * {
+    margin: 20px 0;
+  }
+
+  &__text {
+    margin: 20px 0;
+    white-space: pre-wrap;
+  }
+
+  &__quote {
     display: flex;
+    padding: 20px;
+    margin: 20px -20px;
     flex-direction: column;
+    background-color: $Grey;
 
-    &__done{
-        font-size: 1.5em;
-        text-align: center;
-        margin: $gutter 0;
-        cursor: pointer;
+    cite {
+      padding: 10px 0;
+      font-weight: bold;
+
     }
-    &__back{
-        margin: $gutter 0;
-        text-align: center;
-        font-size: 1.5em;
-        cursor: pointer; 
-        text-decoration: none;
-        color: black;  
-    }
-    &--done{
-        color: $lightGreen;
-    }
+  }
+
+  code {
+    white-space: pre-wrap;
+  }
 }
 
+iframe {
+  width: 100%;
+  height: 400px;
+  margin-bottom: 20px;
+}
+
+.lctButtons {
+  display: flex;
+  flex-direction: column;
+
+  &__done {
+    margin: $gutter 0;
+    font-size: 1.5em;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  &__back {
+    margin: $gutter 0;
+    font-size: 1.5em;
+    color: $black;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  &--done {
+    color: $lightGreen;
+  }
+}
