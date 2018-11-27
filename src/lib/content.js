@@ -53,8 +53,8 @@ function createContent(data, _newSlug) {
     content,
   } = data.lectures[i];
   const header = document.querySelector('.header');
-  header.querySelector('.header__category').appendChild(el('p', category));
-  header.querySelector('.header__title').appendChild(el('p', title));
+  header.querySelector('.header__title').appendChild(el('p', category));
+  header.querySelector('.header__title').appendChild(el('h2', title));
   if (typeof image === 'undefined' || `${image}` === '/img/code3.jpg') {
     header.style.backgroundColor = '$Grey';
   } else {

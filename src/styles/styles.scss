@@ -24,10 +24,6 @@ img { /* stylelint-disable-line */
   max-width: 100%;
 }
 
-.hidden {
-  display: none;
-}
-
 main {
   max-width: $max-width;
   padding-right: $gutter;
@@ -38,3 +34,7 @@ main {
 @import "fyrirlestrar";
 @import "fyrirlestur";
 @import "header";
+
+.hidden {
+  display: none;
+}
