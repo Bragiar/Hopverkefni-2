@@ -2,7 +2,7 @@
 
 ## Upplýsingar um hvernig keyra skuli verkefnið
 
-[Smelltu hér ](https://notendur.hi.is/bra26/vefforritun/Hopverkefni1/) Til að heimsækja slóð á verkefnið keyrandi á vef.
+[Smelltu hér ](https://notendur.hi.is/bra26/vefforritun/Hopverkefni1/) til að komast á slóð verkefnisins keyrandi á vef.
 
 - Þrjú atriði sem við höfum ofarlega í huga við vinnslu verkefnisins.
   - Verkefnið sjálft felst í því að smíða prótótýpu af fyrirlestravef fyrir áfangann, Vefforritun 1.
