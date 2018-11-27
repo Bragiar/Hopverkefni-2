@@ -8,7 +8,7 @@ import { load } from './storage';
  * @param {string} e event þegar ýtt er á fyrirlestur
  */
 function lecturePage(e) {
-  const newURL = `fyrirlestur.html?slug=${e.currentTarget.myslug}`;
+  const newURL = `/pages/lecture.html?slug=${e.currentTarget.myslug}`;
   window.location.assign(newURL);
 }
 

@@ -129,6 +129,7 @@ function fetchData(slug) {
 
 export default function initPage() {
   newSlug = window.location.search.substring(1).split('=')[1]; /* eslint-disable-line */
+  console.log(newSlug);
   fetchData(newSlug);
   doneButton.addEventListener('click', done);
   if (checkIfDone(newSlug)) {
