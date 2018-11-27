@@ -2,7 +2,7 @@
 
 ## Upplýsingar um hvernig keyra skuli verkefnið
 
-[Hér má nálgast verkefnið okkar: ](https://notendur.hi.is/bra26/vefforritun/Hopverkefni1/)
+[Smelltu hér ](https://notendur.hi.is/bra26/vefforritun/Hopverkefni1/) Til að heimsækja slóð á verkefnið keyrandi á vef.
 
 - Þrjú atriði sem við höfum ofarlega í huga við vinnslu verkefnisins.
   - Verkefnið sjálft felst í því að smíða prótótýpu af fyrirlestravef fyrir áfangann, Vefforritun 1.
@@ -94,7 +94,9 @@ Hvað varðar bakenda verkefnisins varðar þá er skiptist hann niður í fimm 
   - Undirsíðurnar innihalda hver sinn haus. Hausinn inniheldur mynd í bakgrunn. Inniheldur heiti tegund fyrirlestur efst í hástöfum og heiti fyrirlestursins í feitletruðu- og stóru letri
   - Undirsíður eru allir þeir fyrirlestrar sem notandinn getur valið að horfa á. Fyrir neðan haus undirsíðunnar er fyrirlesturinn sjálfur (Talsettur) og fyrir neðan talsetta myndbandið er efni fyrirlestrarins skjalað og vel sett upp.
 
-## Grunnupplýsingar um þá nemendur sem unnu verkefnið
+## Grunnupplýsingar
+
+### Nafn og netfang höfunda
 
 - Arnari Inga Njarðarsyni
     - (ain1@hi.is)
