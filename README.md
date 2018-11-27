@@ -47,7 +47,7 @@ Til þess að keyra verkefnið sjálft (án þess að smella á vefsíðuslóð)
     - Komast í verkefnamöppu í skelinni. Því næst skal keyra verkefnið með: 
     - Fyrst: `npm install` og að lokum: `npm run dev`.
 
-## Lýsingu á uppsetningu verkefnis
+## Lýsing á uppsetningu verkefnis
 
 ### Bakendi
 Hvað varðar bakenda verkefnisins varðar þá er skiptist hann niður í fimm möppur sem sumar skiptast niður í undirmöppur sem inniheldur hver sína skrá/skrár. Möppurnar fimm eru:
