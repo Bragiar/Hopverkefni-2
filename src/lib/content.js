@@ -1,10 +1,16 @@
 import { el } from './helpers';
 import { save, checkIfDone } from './storage';
 
-const jsonData = '../../lectures.json';
-const contentDiv = document.querySelector('.content');
-const doneButton = document.querySelector('.lctButtons__done');
-let newSlug;
+const jsonData = '../../lectures.json'; //  slóðin á JSON skrána
+const contentDiv = document.querySelector('.content'); // Elementið fyrir fyrirlestrargögn
+const doneButton = document.querySelector('.lctButtons__done'); //  Takki þegar maður klárar fyrirlestur
+let newSlug; //  Heitið á fyrirlestrinum sem á að setja upp
+/**
+ * Setur upp ákveðinn fyrirlestur á síðunni
+ *
+ * @param {Array} array Fylki með gögn úr ákveðnum fyrirlestri
+ */
+
 
 function elementBuilder(array) {
   if (array.type === 'youtube') {
@@ -36,6 +42,14 @@ function elementBuilder(array) {
     contentDiv.appendChild(el('code', `${array.data}`));
   }
 }
+/**
+ * Leitar í fyrirlestrunum að rétta fyrirlestrinum sem á að setja upp
+ * Kallar svo á elementBuilder með réttum fyrirlestri
+ *
+ * @param {Array} data Fylki með öllum fyrirlestrunum
+ * @param {String} _newSlug  // Heitið á fyrirlestrinum se má að setja upp
+ */
+
 
 function createContent(data, _newSlug) {
   let i;
@@ -64,6 +78,12 @@ function createContent(data, _newSlug) {
     elementBuilder(content[k]);
   }
 }
+/**
+ * Skoðar hvort það sé nú þegar búið að klára fyrirlestur
+ * þegar ýtt er á "klára fyrirlestur" takkann
+ *
+ */
+
 function done() {
   if (checkIfDone(newSlug)) {
     save(newSlug, false);
@@ -75,6 +95,16 @@ function done() {
     doneButton.classList.toggle('lctButtons--done');
   }
 }
+/**
+ * Sækir fyrirlestrargögnin úr JSON og kallar á createContent með réttum
+ * fyrirlestri
+ * @param {String} slug Heitið á fyrirlestri sem á að setja upp
+ *
+ * Kallar á createContent með réttu heiti á fyrirlestri og öllum
+ * fyrirlestrargögnum
+ *
+ */
+
 function fetchData(slug) {
   fetch(jsonData)
     .then((response) => {
@@ -91,6 +121,11 @@ function fetchData(slug) {
       console.error(error);
     });
 }
+/**
+ * Setur upp síðuna, finnur slug-ið í URL-inu og kallar á fetchdata
+ * Setur upp eventListenera og skoðar hvort fyrirlestur sé nú þegar
+ * kláraður
+ */
 
 export default function initPage() {
   newSlug = window.location.search.substring(1).split('=')[1]; /* eslint-disable-line */

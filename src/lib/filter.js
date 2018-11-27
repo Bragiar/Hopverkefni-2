@@ -1,6 +1,12 @@
-const HTMLbutton = document.querySelector('.HTML');
-const CSSbutton = document.querySelector('.CSS');
-const JSbutton = document.querySelector('.JS');
+
+
+const HTMLbutton = document.querySelector('.HTML'); //  Takki til að sía út HTML fyrirlestra
+const CSSbutton = document.querySelector('.CSS'); // Takki til að sía út CSS fyrirlestra
+const JSbutton = document.querySelector('.JS'); //  Takki til að sía út JavaScript fyrirlestra
+
+/**
+ * Síar út rétta fyrirlestra þegar ýtt er á einhvern takka
+ */
 
 function filterItems() {
   const htmlUntoggled = HTMLbutton.classList.contains('untoggled');
@@ -37,10 +43,20 @@ function filterItems() {
   }
 }
 
+/**
+ * @param {e} event event frá ákveðnum takka þegar er verið að
+ * sía fyrirlestra
+ *
+ */
 function filter(e) {
   e.target.classList.toggle('untoggled');
   filterItems();
 }
+
+/**
+ * Setur upp EventListenera á síunartakkana
+ */
+
 export default function initButtons() {
   HTMLbutton.addEventListener('click', filter);
   CSSbutton.addEventListener('click', filter);

@@ -1,3 +1,9 @@
+/**
+ * Hreinsa börn úr elementi
+ *
+ * @param {object} element Element sem á að hreinsa börn úr
+ */
+
 export function empty(element) {
   while (element.firstChild) {
     element.removeChild(element.firstChild);

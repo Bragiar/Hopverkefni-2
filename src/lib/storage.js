@@ -14,19 +14,18 @@ const LOCALSTORAGE_KEY = 'lectures_done';
 export function load() {
   const arrayData = JSON.parse(window.localStorage.getItem(LOCALSTORAGE_KEY));
   return arrayData;
-  // todo útfæra
 }
 
 /**
- * Vista stig
+ * Vistar fyrirlestur
  *
- * @param {string} name Nafn þess sem á að vista
- * @param {number} points Stig sem á að vista
+ * @param {string} _lecture Nafn fyrirlesturs þess sem á að vista
+ * @param {boolean} _done true ef búið er að lesa fyrirlestur annars false
  */
-export function save(slecture, sdone) {
+export function save(_lecture, _done) {
   const newLecture = {
-    lecture: slecture,
-    done: sdone,
+    lecture: _lecture,
+    done: _done,
   };
   const arrayData = window.localStorage.getItem(LOCALSTORAGE_KEY);
   if (arrayData === null) {
@@ -36,8 +35,8 @@ export function save(slecture, sdone) {
     const data = JSON.parse(arrayData);
     let ifNotDone = true;
     for (let i = 0; i < data.length; i += 1) {
-      if (slecture === data[i].lecture) {
-        data[i].done = sdone;
+      if (_lecture === data[i].lecture) {
+        data[i].done = _done;
         ifNotDone = false;
         break;
       }
@@ -47,8 +46,14 @@ export function save(slecture, sdone) {
     }
     window.localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(data));
   }
-  // todo útfæra
 }
+/**
+ * Skoðar hvort fyrirlestur er þegar búinn
+ *
+ * @param {string} slug nafn á fyrirlestri
+ *
+ * @returns {boolean} true ef fyrirlestur er nú þegar búinn, annars false
+ */
 
 export function checkIfDone(slug) {
   const arrayData = window.localStorage.getItem(LOCALSTORAGE_KEY);

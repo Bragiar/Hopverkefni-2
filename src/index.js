@@ -3,6 +3,10 @@ import List from './lib/list';
 import initPage from './lib/content';
 import initButtons from './lib/filter';
 
+/**
+ * Finnur hvora síðuna maður er á og sækir gögn
+ * í samræmi við það
+ */
 
 document.addEventListener('DOMContentLoaded', () => {
   const page = document.querySelector('body');
