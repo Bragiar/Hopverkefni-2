@@ -1,83 +1,90 @@
 # Hópverkefni 2
 
-Verkefnið felst í því að smíða prótótýpu af fyrirlestravef fyrir vefforritun. Gefin eru gögn sem unnin eru uppúr námsefni vetrarins.
+Unnið af:
+- Arnari Inga Njarðarsyni
+    - (ain1@hi.is)
+- Árna Frey Magnússyni
+    - (afm7@hi.is)
+- Braga Arnarsyni
+    - (bra26@hi.is)
 
-Gefnar eru [fyrirmyndir](utlit/) í `500px` og `1500px` án grindar ásamt `1500px` með grind. Allt efni skal skalast snyrtilega á milli.
+## Upplýsingar um hvernig keyra skuli verkefnið
 
-## Almennt
+[Hér má nálgast verkefnið okkar: ](https://notendur.hi.is/bra26/vefforritun/Hopverkefni1/)
 
-Gögn eru gefin í `lectures.json` sem sækja skal með _ajax_ virkni. Keyra verður verkefnið með `browser-sync` til að það virki.
+- Þrjú atriði sem við höfum ofarlega í huga við vinnslu verkefnisins.
+  - Verkefnið sjálft felst í því að smíða prótótýpu af fyrirlestravef fyrir áfangann, Vefforritun 1.
+  - Gögn sem notast er við í verkefninu byggjast á námsefni vetrarins.
+  - Verkefni skal skilast snyrtilega af hendi.
 
-Efni síðu skal ekki vera breiðara en `1200px`. Litir og myndir í haus skulu fylla út í allt lárétt pláss. Yfir myndum er 60% gegnsær hvítur litur. Myndir fyrir hvern fyrirlestur eru skilgreindir í `json` skrá.
+Til þess að keyra verkefnið sjálft (án þess að smella á vefsíðuslóð) þá skal fylgja eftirfarandi skrefum. 
 
-Grunn leturstærð er 16px og fylgja allar aðrar leturgerðir eftirfarandi skala: `16 24 32 48`.
+* Skal fara á gefna slóð verkefnisins okkar á github.com (https://github.com/Bragiar/Hopverkefni-2) sem inniheldur eftirfarandi tól:
 
-Litapalletta fyrir vef er `#000`, `#999`, `#aaa`, `#ccc`, `#2d2`, `#1a1`, `#fcffd2` og `#cc9694`.
+* `.stylelintrc` með upplýsingum um hvernig stylelint eigi að haga sér. Setja þarf upp `stylelint-config-primer` pakkann
+* `.eslintrc` skrá sem segir til um hvernig lint fyrir JavaScript skrár skuli háttað
+* `.gitignore` sem hunsar algengar skrár, [sjá nánar](https://help.github.com/ignore-files/)
+  - Allt undir `./dist` hunsað sem þýðir að það verður _ekki_ checkað inn. Það er gert vegna þess að þær skrár eru útbúnar af tólum þegar verkefni er keyrt.
+* `.gitattributes` sem kemur í veg fyrir ósamræmi sem geta komið upp þegar unnið er á milli stýrikerfa
+* `.editorconfig` sem samræmir notkun á tabs og spaces, bilum [og fleira](https://editorconfig.org/)
+* `grid.css` til að sjá grid sem fyrirmynd er unnin eftir
+* `src/` mappa með
+  - `styles/` undirmöppu með `styles.scss` grunni
+  - `lib/` undirmappa sem gæti innihaldið JavaScript kóða auk tillögu að grunni fyrir virkni á forsíðu
+  - `index.js` skrá sem vísar í `lib/`
+* `dist/` mappa sem ætti að innihalda _þýddar_ sass og JavaScript skrár
+* `img/` með öllum myndum sem þarf í verkefnið
+* `package.json` hefur uppsett script ásamt dependencies
+  - `eslint` til að keyra eslint
+  - `stylelint` til að keyra stylelint
+  - `test` til að keyra bæði `eslint` og `stylelint`
+  - `browser-sync` til að keyra verkefni, bæta þarf við skrám sem vaktaðar eru
+  - `sass` til að keyra fyrstu þýðingu
+  - `sass-watch` til að fylgjast með sass skrám og þýða
+  - `dev` til að keyra `sass` og `browser-sync`
 
-Letur fyrir meginmál er Lora, Times New Roman eða serif letur.
-Letur fyrir fyrirsagnir er Roboto Mono, Courier New eða monospace.
+* Clone-a verkefnið.
+* Setja upp: 
+* `rollup` til að pakka saman JavaScript kóða.
+  - Fyrir `rollup` gerir maður t.a.m. `npm install rollup` og þá fer `rollup` í `package.json` og í `node modules`. 
+* `babel` til að _transpila_ kóða.
 
-Flest allt er sett upp í 12 dálka grind með `20px` gutter.
 
-Öll bil eru hálft, heilt, tvöfalt eða þrefalt margfeldi af gutter. Hægt er að nota reglustiku tól (t.d. http://www.arulerforwindows.com/ eða http://www.pascal.com/software/freeruler/) til að finna nákvæmar stærðir en mestu skiptir að lausn svipi til en sé ekki nákvæmlega eins og fyrirmynd.
+* Sækja þarf `node-modules` möppu sem inniheldur fjöldan allan af undirmöppum og skrám. Mappan fæst á vefslóðinni: https://nodejs.org/en/, svo hægt sé að keyra verkefnið með npm í `terminal` (fyrir Apple notendur)/`Command prompt` (fyrir Windows notendur).
+  - Keyra skal verkefnið með npm skipunum í ofangreindum skelum með eftirfarandi hætti:
+    - Komast í verkefnamöppu í skelinni. Því næst skal keyra verkefnið með: 
+    - Fyrst: `npm install` og loks að lokum: `npm run dev`.
 
-Allar hreyfingar gerast á `300ms` með `ease-in-out` hröðunarfalli. Hreyfingar eru þegar svimað er yfir fyrirlestri í lista og síunar tökkum.
+## Lýsingu á uppsetningu verkefnis
 
-## Forsíða
+Hvað varðar innviði verkefnisins þá er skiptist bakendi verkefnisins upp í fimm möppur sem sumar skiptast upp í undirmöppur:
+* `dist/` möppu sem er ekki gefin. Hún myndast við keyrslu `npm run sass` skipunina. Mappan inniheldur þrjár skrár:
+  - `bundle.js`: Stór `.js` skrá sem inniheldur allar helstu grunnupplýsingar hvað varðar virkni og byggingu vefsins. `rollup` býr til þessa JavaScript skrá.
+  - `bundle.js.map`: JavaScript skrá sem `rollup` býr til.
+  - `styles.css`: `npm run sass` myndast við keyrslu þessarar skrá.
 
-Forsíða inniheldur lista af öllum fyrirlestrum. Fram kemur hvort búið sé að klára fyrirlestur eða ekki. Nota skal `✓` til að tákna að fyrirlestri séð lokið, sjá að neðan hvernig virkni er.
+* `img/` mappa. Í henni má finna allar myndir sem við notum í verkefninu, 22 talsins. Þær koma frá eftirfarandi vefslóðum:
+  - https://unsplash.com/photos/xekxE_VR0Ec
+  - https://unsplash.com/photos/C4G18Paw0d4
+  - https://unsplash.com/photos/iar-afB0QQw
 
-Fyrir ofan lista skulu vera þrír takkar fyrir hvern af flokkunum: `HTML`, `CSS` og `JavaScript`. Í byrjun er engin takki virkur en um leið og takki er virkur skal aðeins sýna fyrirlestra í þeim flokk og takki litaður með `#2d2`. Ef fleiri takkar eru virkjaðir skal einnig sína þá fyrirlestra. Ef allir takkar eru virkir sést það sama og ef allir eru óvirkir—allir fyrirlestrar.
+* `node_modules/` möppu myndast þ.s. við höfum gefið `package.json`. Sláum inn `npm install` og þá hleðst allt úr `package.json` inn í `node_modules/`. Getum líka gert látið rollup inn í `node_modules`.
 
-Þegar smellt er á fyrirlestur er farið yfir á `fyrirlestur.html?slug=<slug>` þar sem `<slug>` er _slug_ fyrir fyrirlesturinn, t.d. `fyrirlestur.html?slug=html-sagan`. Hægt er að nota `URLSearchParams` og `window.location.search` til að vita hvaða fyrirlestur átt er við á `fyrirlestur.html` síðu.
+* `src` möppu sem er að vísu gefin. Hún inniheldur tvær möppur `lib` og `styles` og loks eina skrá `index.js` 
 
-## Fyrirlestur
+* `lib` mappa sem inniheldur tvær gefnar `.js` skrár og þrjár aðrar `.js` skrár sem við bjuggum sjálfir til. Skrárnar eru:
+  - `content`: Skrá sem inniheldur hvað gera skal við ákveðna hluti innan verkefnisins t.d. ef smellt er á takka eða hversu stórt að stærð fyrirlesturinn sjálfur eigi að vera á fyrirlestrarvefsíðuni. 
+  - `helpers.js`: Skrá sem er að hluta til gefin. Inniheldur fallið `empty(element)` sem var gefið. Bjuggum sjálfir til annað fall sem heitir `el(name,... children)`. Það er tekur inn nafn á elementi og börn ef send eru með inn. Að hluta til gefin skrá í verkefninu.
+  - `filter`: Skrá fyrir takka. Stutt lýsing: Stjórnar því hvað gerist ef takkar eru toggled, untoggled, hidden og/eða unhidden á ákveðnum tímapunkti. Ekki gefin skrá í verkefninu.
+  - `list.js`: Skrá sem skilgreinir hluti sem notaðir eru í HTML-inu t.d.
+  - `storage`: Skrá sem hefur m.a. það hlutverk að sækja gögn og vista í localStorage
 
-Fyrir hvern fyrirlestur skal birta haus og allt efni fyrirlesturs á eftir honum. Í haus kemur fram flokkur og titill.
-
-Efni fyrirlesturs er geymt í fylki og skal birta það í sömu röð og það er skilgreint. Útbúa þarf birtingu fyrir hverja einingu eftir útliti.
-
-Neðst er takki til að merkja fyrirlestur kláraðann og hlekkur til að fara til baka.
-
-### Kláraður fyrirlestur
-
-Ef fyrirlestur er merktur kláraður skal sýna `✓ Fyrirlestur kláraður` í `#2d2`. Annars `Klára fyrirlestur`. Þegar fyrirlestur er kláraður skal vista upplýsingar um það í `localStorage` og birta í lista og á fyrirlestra síðu.
-
-Nota skal `slug` sem auðkenni yfir kláraða fyrirlestra.
-
-## Fyrirlestragögn
-
-`lectures.json` inniheldur fylki af fyrirlestrum sem birta skal. Hver fyrirlestur getur haft:
-
-* `slug`, notað til að hlekkja á fyrirlestur
-* `title`, titill fyrirlesturs
-* `category`, flokkur fyrirlesturs
-* `image`, mynd í hausi fyrirlesturs, má sleppa, þá skal birta gráan lit í staðinn
-* `thumbnail`, mynd á yfirliti fyrirlestra, má sleppa, þá skal birta gráan lit í staðinn
-* `content`, fylki af efni fyrirlesturs
-
-Fyrir efni fyrirlesturs er efni alltaf með:
-
-* `type`, gerð efnis
-* `data`, gögn efnis
-
-þar sem `type` getur verið:
-
-* `youtube`, `data` inniheldur hlekk á youtube myndband
-* `text`, `data` inniheldur gögn þar sem `\n` merkir á milli málsgreina, þ.e.a.s. texta skal birta innan `<p>`, skipt á `\n`
-* `quote`, `data` inniheldur tilvitnun, aukalega getur verið `attribute` með þeim sem vitnað er í
-* `image`, `data` inniheldur slóð á mynd, aukalega getur verið `caption` með texta með mynd
-* `heading`, `data` inniheldur fyrirsögn
-* `list`, `data` inniheldur fylki af textum í lista
-* `code`, `data` inniheldur kóða þar sem bil og nýjar línur skipta máli
-
-Athugið að meira efni mun bætast við það sem gefið er í byrjun. Virkni ætti að ráða við hvaða efni sem er í hvaða formi sem er, svo lengi sem það fylgir reglum að ofan.
-
-## Hópavinna
-
-Verkefnið skal unnið í hóp með þremur einstaklingum. Hafið samband við kennara ef ekki er mögulegt að vinna í hóp.
-
-Notast skal við Git og GitHub. Engar zip skrár með kóða ættu að ganga á milli í hópavinnu, heldur á að „committa“ allan kóða og vinna gegnum Git.
+ * `styles`: Mappa sem inniheldur tvær gefnar `.scss` skrár og þrjár aðrar `.scss` skrár sem við bjuggum sjálfir til. Skrárnar eru:
+  -  `config.scss`: Skrá sem inniheldur skilgreiningar á litum, gutter, hámarksleturstærð og leturgerð svo eitthvað sé nefnt.
+  - `fyrirlestrar.scss`: Skrá inniheldur skilgreiningar sem varða stærð, lögun, bili og öðrum upplýsingum t.d. á tökkum á upphafssíðunni.
+  - `fyrirlestur.scss`: Skrá sem inniheldur hvernig lögun hluta innan hvers fyrirlesturs er ásamt bili, lit o.fl.
+  - `header.scss`: Skrá sem inniheldur upplýsingar varðandi stærð og gerð haus verkefnisins. 
+  - `styles.scss`: Skrá sem skilgreinir grunnupplýsingar verkefnisins. Hámarksstærð mynda (.img) og grunnstærð almenns leturs.
 
 ## Lýsing á verkefni
 
