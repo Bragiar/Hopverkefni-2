@@ -27,7 +27,7 @@ function elementBuilder(array) {
     quote.appendChild(el('cite', `${array.attribute}`));
   } else if (array.type === 'image') {
     const figure = contentDiv.appendChild(el('figure'));
-    figure.appendChild(el('img')).setAttribute('src', `${array.data}`);
+    figure.appendChild(el('img')).setAttribute('src', `../${array.data}`);
     if (typeof array.caption !== 'undefined') {
       figure.appendChild(el('figcaption', `${array.caption}`));
     }
@@ -129,7 +129,6 @@ function fetchData(slug) {
 
 export default function initPage() {
   newSlug = window.location.search.substring(1).split('=')[1]; /* eslint-disable-line */
-  console.log(newSlug);
   fetchData(newSlug);
   doneButton.addEventListener('click', done);
   if (checkIfDone(newSlug)) {
