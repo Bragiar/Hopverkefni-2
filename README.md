@@ -4,7 +4,7 @@
 
 [Smelltu hér ](https://notendur.hi.is/bra26/vefforritun/Hopverkefni2/) til að komast á slóð verkefnisins keyrandi á vef.
 
-- Þrjú atriði sem við höfum ofarlega í huga við vinnslu verkefnisins.
+- Þrjú atriði sem við höfum ofarlega í huga við vinnslu við verkefnið.
   - Verkefnið sjálft felst í því að smíða prótótýpu af fyrirlestravef fyrir áfangann, Vefforritun 1.
   - Gögn sem notast er við í verkefninu byggjast á námsefni vetrarins.
   - Verkefni skal skilast snyrtilega af hendi.
@@ -60,7 +60,7 @@ Hvað varðar bakenda verkefnisins þá er skiptist hann niður í fimm möppur 
   - https://unsplash.com/photos/C4G18Paw0d4
   - https://unsplash.com/photos/iar-afB0QQw
 
-* `node_modules/` möppu myndast þ.s. við höfum gefið `package.json`. Sláum inn `npm install` og þá hleðst allt úr `package.json` inn í `node_modules/`. Getum líka gert látið rollup inn í `node_modules`.
+* `node_modules/` er mappa sem myndast þ.s. við höfum gefið `package.json`. Sláum inn `npm install` og þá hleðst allt úr `package.json` inn í `node_modules/`. Getum líka gert látið rollup inn í `node_modules`.
 
 * `src` möppu sem er að vísu gefin. Hún inniheldur tvær möppur `lib` og `styles` og loks eina skrá `index.js`
 
