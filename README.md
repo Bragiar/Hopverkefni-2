@@ -4,48 +4,50 @@
 
 [Smelltu hér ](https://notendur.hi.is/bra26/vefforritun/Hopverkefni1/) Til að heimsækja slóð á verkefnið keyrandi á vef.
 
-- Þrjú atriði sem við höfum ofarlega í huga við vinnslu verkefnisins.
+- Þrjú atriði sem við höfum ofarlega í huga við vinnslu við verkefnið.
   - Verkefnið sjálft felst í því að smíða prótótýpu af fyrirlestravef fyrir áfangann, Vefforritun 1.
   - Gögn sem notast er við í verkefninu byggjast á námsefni vetrarins.
   - Verkefni skal skilast snyrtilega af hendi.
 
 Til þess að keyra verkefnið sjálft (án þess að smella á vefsíðuslóð) skal fylgja eftirfarandi skrefum:
 
-* Skal fara á gefna slóð verkefnisins okkar á github.com (https://github.com/Bragiar/Hopverkefni-2) sem inniheldur eftirfarandi tól:
+* Fyrst skal fara á gefna slóð verkefnisins okkar á github.com (https://github.com/Bragiar/Hopverkefni-2) sem inniheldur eftirfarandi tól:
 
-* `.stylelintrc` með upplýsingum um hvernig stylelint eigi að haga sér. Setja þarf upp `stylelint-config-primer` pakkann
-* `.eslintrc` skrá sem segir til um hvernig lint fyrir JavaScript skrár skuli háttað
-* `.gitignore` sem hunsar algengar skrár, [sjá nánar](https://help.github.com/ignore-files/)
-  - Allt undir `./dist` hunsað sem þýðir að það verður _ekki_ checkað inn. Það er gert vegna þess að þær skrár eru útbúnar af tólum þegar verkefni er keyrt.
-* `.gitattributes` sem kemur í veg fyrir ósamræmi sem geta komið upp þegar unnið er á milli stýrikerfa
-* `.editorconfig` sem samræmir notkun á tabs og spaces, bilum [og fleira](https://editorconfig.org/)
-* `grid.css` til að sjá grid sem fyrirmynd er unnin eftir
-* `src/` mappa með
-  - `styles/` undirmöppu með `styles.scss` grunni
-  - `lib/` undirmappa sem gæti innihaldið JavaScript kóða auk tillögu að grunni fyrir virkni á forsíðu
-  - `index.js` skrá sem vísar í `lib/`
-* `dist/` mappa sem ætti að innihalda _þýddar_ sass og JavaScript skrár
-* `img/` með öllum myndum sem þarf í verkefnið
-* `package.json` hefur uppsett script ásamt dependencies
-  - `eslint` til að keyra eslint
-  - `stylelint` til að keyra stylelint
-  - `test` til að keyra bæði `eslint` og `stylelint`
-  - `browser-sync` til að keyra verkefni, bæta þarf við skrám sem vaktaðar eru
-  - `sass` til að keyra fyrstu þýðingu
-  - `sass-watch` til að fylgjast með sass skrám og þýða
-  - `dev` til að keyra `sass` og `browser-sync`
+  * `.stylelintrc` með upplýsingum um hvernig stylelint eigi að haga sér. Setja þarf upp `stylelint-config-primer` pakkann
+  * `.eslintrc` skrá sem segir til um hvernig lint fyrir JavaScript skrár skuli háttað
+  * `.gitignore` sem hunsar algengar skrár, [sjá nánar](https://help.github.com/ignore-files/)
+    - Allt undir `./dist` hunsað sem þýðir að það verður _ekki_ checkað inn. Það er gert vegna þess að þær skrár eru útbúnar af tólum þegar verkefni er keyrt.
+  * `.gitattributes` sem kemur í veg fyrir ósamræmi sem geta komið upp þegar unnið er á milli stýrikerfa
+  * `.editorconfig` sem samræmir notkun á tabs og spaces, bilum [og fleira](https://editorconfig.org/)
+  * `grid.css` til að sjá grid sem fyrirmynd er unnin eftir
+  * `src/` mappa með
+    - `styles/` undirmöppu með `styles.scss` grunni
+    - `lib/` undirmappa sem gæti innihaldið JavaScript kóða auk tillögu að grunni fyrir virkni á forsíðu
+    - `index.js` skrá sem vísar í `lib/`
+  * `dist/` mappa sem ætti að innihalda _þýddar_ sass og JavaScript skrár
+  * `img/` með öllum myndum sem þarf í verkefnið
+  * `package.json` hefur uppsett script ásamt dependencies
+    - `eslint` til að keyra eslint
+    - `stylelint` til að keyra stylelint
+    - `test` til að keyra bæði `eslint` og `stylelint`
+    - `browser-sync` til að keyra verkefni, bæta þarf við skrám sem vaktaðar eru
+    - `sass` til að keyra fyrstu þýðingu
+    - `sass-watch` til að fylgjast með sass skrám og þýða
+    - `dev` til að keyra `sass` og `browser-sync`
 
-* Clone-a verkefnið.
-* Setja upp: 
-* `rollup` til að pakka saman JavaScript kóða.
+* Loks skal Clone-a/Downloada verkefninu (Sjá grænan takka).
+* Svo skal setja upp tvennt: 
+  * `rollup` til að pakka saman JavaScript kóða.
   - Fyrir `rollup` gerir maður t.a.m. `npm install rollup` og þá fer `rollup` í `package.json` og í `node modules`. 
-* `babel` til að _transpila_ kóða.
+  * `babel` til að _transpila_ kóða.
+og bæta við í rót ofangreindra tóla.
 
 
-* Sækja þarf `node-modules` möppu sem inniheldur fjöldan allan af undirmöppum og skrám. Mappan fæst á vefslóðinni: https://nodejs.org/en/, svo hægt sé að keyra verkefnið með npm í `terminal` (fyrir Apple notendur)/`Command prompt` (fyrir Windows notendur).
-  - Keyra skal verkefnið með npm skipunum í ofangreindum skelum með eftirfarandi hætti:
-    - Komast í verkefnamöppu í skelinni. Því næst skal keyra verkefnið með: 
-    - Fyrst: `npm install` og að lokum: `npm run dev`.
+* Því næst þarf að sækja `node-modules` möppu sem inniheldur fjöldan allan af undirmöppum og skrám. Mappan fæst á vefslóðinni: https://nodejs.org/en/, svo hægt sé að keyra verkefnið með npm í `terminal` (fyrir Apple notendur)/`Command prompt` (fyrir Windows notendur).
+
+* Að lokum skal keyra skal verkefnið með npm skipunum í ofangreindum skelum með eftirfarandi hætti:
+  - Komast í möppu þar sem verkefnið er geymt í skelinni (terminal/command prompt). 
+  - Keyra tvennar skipanir: Fyrri: `npm install` og síðari: `npm run dev`.
 
 ## Lýsingu á uppsetningu verkefnis
 
@@ -62,7 +64,7 @@ Hvað varðar bakenda verkefnisins varðar þá er skiptist hann niður í fimm 
   - https://unsplash.com/photos/C4G18Paw0d4
   - https://unsplash.com/photos/iar-afB0QQw
 
-* `node_modules/` möppu myndast þ.s. við höfum gefið `package.json`. Sláum inn `npm install` og þá hleðst allt úr `package.json` inn í `node_modules/`. Getum líka gert látið rollup inn í `node_modules`.
+* `node_modules/` er mappa sem myndast þ.s. við höfum gefið `package.json`. Sláum inn `npm install` og þá hleðst allt úr `package.json` inn í `node_modules/`. Getum líka gert látið rollup inn í `node_modules`.
 
 * `src` möppu sem er að vísu gefin. Hún inniheldur tvær möppur `lib` og `styles` og loks eina skrá `index.js` 
 
