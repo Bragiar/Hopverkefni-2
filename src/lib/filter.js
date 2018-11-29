@@ -44,7 +44,7 @@ function filterItems() {
 }
 
 /**
- * @param {e} event event frá ákveðnum takka þegar er verið að
+ * @param {Event} e event frá ákveðnum takka þegar er verið að
  * sía fyrirlestra
  *
  */
